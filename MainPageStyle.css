@@ -72,3 +72,12 @@ overflow: hidden;
 {
     list-style-type: none;
 }
+.topnav{
+    text-align: right;
+    padding-right: 70px;
+}
+ .topnav a{
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+ }
