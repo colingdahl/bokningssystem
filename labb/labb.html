@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Axels forum</title>
+    <link rel="stylesheet" href="C:\Users\axeld\Documents\Visual Studio 2019\E-tjänster\labb\labbish.css"
+        type="text/css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>Axels forum</h1>
+            <hr />
+        </div>
+
+        <div id="content">
+            <div id="upload">
+                <h3>Lägg upp ett inlägg:</h3>
+                <form name="info">
+                    <label for="name">Namn:</label><br>
+                    <input type="text" id="iname" name="iname"><br>
+                    <label for="email">E-mailadress:</label><br>
+                    <input type="text" id="imail" name="imail">
+                </form>
+                <form name="message">
+                    <label for="message">Meddelande:</label><br>
+                    <textarea id="imessage" name="imessage"> </textarea>
+
+                </form>
+                <button id="submitbtn" type="button">Publicera! </button>
+            </div>
+            <div id="posts">
+                <h3>Upplagda inlägg:</h3>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var submitbtn = document.getElementById('submitbtn');
+        submitbtn.addEventListener("click", validateForm);
+        function validateForm() {
+            var jname = document.info.iname.value;
+            var jemail = document.info.imail.value;
+            var jmessage = document.message.imessage.value;
+
+            if (jname.value == "") {
+                alert("You must write a name!")
+                console.log("This is not a valid name");
+            }
+            else {
+                console.log("This is a valid name")
+            }
+
+            ValidateEmail(jemail);
+        }
+
+
+        function ValidateEmail(mail) {
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+            if(mail.match(mailformat)){
+                console.log("correct email")
+                return (true)
+            }
+            else
+            alert("You have entered an invalid email address!")
+            console.log("incorrect email")
+            return (false)
+        }
+
+
+    </script>
+</body>
+
+</html>
