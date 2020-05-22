@@ -1,12 +1,19 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
 
     <title>Axels forum</title>
-    <link rel="stylesheet" href="C:\Users\axeld\Documents\Visual Studio 2019\E-tjänster\labb\labbish.css"
-        type="text/css">
-       
+        <link rel="stylesheet" href="labbish.css"
+            type="text/css">
+            <?php
+
+include 'db_connect.php';
+include 'feed.php';
+setComments($db);
+
+ ?>
 </head>
 
 <body>
@@ -20,21 +27,23 @@
         <div id="content">
             <div id="upload">
                 <h3>Lägg upp ett inlägg:</h3>
-                <form name="info">
+                <form name="info" id="info" action="labb.php" onsubmit="return validateForm()" method="post">
                     <label for="name">Namn:</label><br>
-                    <input type="text" id="iname" name="iname"><br>
+                    <input type="text" id="Namn" name="Namn"><br>
                     <label for="email">E-mailadress:</label><br>
-                    <input type="text" id="imail" name="imail">
+                    <input type="text" id="Email" name="Email"><br>
+                    <label for="Inlägg">Meddelande:</label><br>
+                    <textarea id="Inlägg" name="Inlägg" type="text">  </textarea>
+                    <button id="submitbtn" onclick ="validateForm()" type="submit" href="feed.php" input name="submit_data"
+                    value="skicka">Publicera!  </button>
+        
                 </form>
-                <form name="message">
-                    <label for="message">Meddelande:</label><br>
-                    <textarea id="imessage" name="imessage"> </textarea>
-
-                </form>
-                <button id="submitbtn" type="button">Publicera! </button>
             </div>
             <div id="posts">
                 <h3>Upplagda inlägg:</h3>
+                <?php
+                getComments($db);
+                ?>
             </div>
         </div>
     </div>
@@ -59,18 +68,7 @@
         }
 
 
-        function ValidateEmail(mail) {
-            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-            if (mail.match(mailformat)) {
-                console.log("correct email")
-                return (true)
-            }
-            else
-                alert("You have entered an invalid email address!")
-            console.log("incorrect email")
-            return (false)
-        }
+  
 
 
     </script>
